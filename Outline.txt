@@ -1,0 +1,112 @@
+Outline: Asset Management Program
+
+Welcome Message
+    Query, Change, Verify, Change Management, Import, Export Asset Information
+
+Menu
+    1. One Scan at a Time
+        1.1 Verify Only
+        1.2 Change Asset Information & Verify
+        1.3 Export Singular Asset Information
+    2. Mass Scan Import / Query / Export
+        2.1 Import Mass Scan
+        2.2 Create New Scan
+        2.3 Use Mass Scan to export list of Asset Information
+    3. Help
+        3.1 How to use this application? [README]
+        3.2 How does it work?
+        3.3 History.log - Change Management
+        3.4 Error Codes
+    4. Exit
+
+1. One Scan at a Time
+    1.1 Verify Only
+        - input serial
+        - verify[Enter]
+        - Again?[ENTER], Menu[m], Exit[q]
+        
+    1.2 Change Asset Information & Verify
+        - input serial
+        - vim into individual asset information
+        - change, compare
+            -> paperwork? Generate it at this step -> transfer of ownership, end of life, etc.
+            -> these are the changes you're making, are you sure [yes or Enter/ no]
+            -> requests second approval from Asset Manager - commit to Main
+        - Again?[ENTER], Menu[m], Exit[q]
+        
+    1.3 Export Singular Asset Information
+        - input serial
+        - view asset information, is this the information you're looking for? [yes/no]
+            -> yes - export print out to excel or txt
+            -> no - Try Another Serial?[ENTER], Menu[m], Exit[q] 
+
+2. Mass Scan Import / Query / Export
+    2.1 Import Mass Scan
+        - import mass scan w/ filepath
+        - Add another scan? [yes/no]
+        - clean -unique
+        - verify[v], edit Asset Information[e], Menu[m], Exit[]
+            [v] Verify - add to $verifiedSerials
+            [e] edit
+                - pull list of assets from CMR -> 
+                - create temp bookmark to edit in
+                - paperwork? Generate it at this step -> transfer of ownership, end of life, etc.
+            [m] Menu - Your changes will not be saved. Are you sure you want to continue? [yes/no]
+                    yes => Menu
+                    no  => repeat options: verify, edit, menu, exit, try again?
+            [q] Exit
+    
+    2.2 Create New Scan
+        - prompt - directory, navigate to directory
+        - prompt - file name, mk file
+        - prompt - "scan barcode into terminal, hit [ENTER] to scan another serial."
+            - add serial to $newScan
+            echo "$serial added into $newScan"
+            echo "when done scanning barcodes into new scan type [wq] instead and hit enter."
+        - clean -unique
+        - verify[v], edit[e], menu[m], exit[q]
+            [v] Verify - add to $verifiedSerials
+            [e] edit
+                - pull list of assets from CMR -> 
+                - create temp bookmark to edit in
+                - paperwork? Generate it at this step -> transfer of ownership, end of life, etc.
+            [m] Menu - Your changes will not be saved. Are you sure you want to continue? [yes/no]
+                yes => Menu
+                no  => repeat options: verify, edit, menu, exit Again
+            [q] Exit
+
+    2.3 Use Mass Scan to Export List of Asset Information
+        - echo - import list of serials you want asset inforamtion about
+        - prompt - filepath and file name of .csv
+        - query serials from CMR
+        - display information in terminal
+        - Are these the correct serials? [yes/no]
+            yes =>
+                -prompt what would you like to name the file?
+                echo "file can be found in the downloads folder"
+                export information to csv file and open in excel - store in /Downloads
+            no  => Try Again[r], Menu[m], Exit[q]
+
+3. Help 
+    Problem, Goal, Solution
+    3.1 How to use this application? ~Internal Tools~
+        3.1.1 One Scan at a Time
+            - Verify Only
+            - Change Asset Information & Verify
+            - Export Singular Asset Information
+        3.1.2 Mass Scan Import
+            - Import Mass Scan
+            - Create New Scan
+            - Use Mass Scan to Export List of Asset Information
+    3.2 How does it work?
+        3.2.1 PowerShell
+            - Resource Links
+                * PowerShell in a Month of Lunches
+                * PowerShell Scripting in a Month of Lunches
+                * Stack Overflow
+            - Cmdlts - What are they? How do they work?
+                * Utility and Definitions
+        3.2.2 External Dependencies
+            - Asset Management Lifecycle
+    3.3 History.log - Change Management
+    3.4 Error Codes
