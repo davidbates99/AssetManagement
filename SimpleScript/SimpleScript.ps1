@@ -27,6 +27,7 @@ foreach($serial in $CombinedScans){
 foreach($serial in $MasterAssetList){
 	if($Report_Verified. NotContains($serial)) {
     $Report_NotVerified += $serial}
+    #Add an else statement to test for output
 }
 
 Write-Output $Report_Verified
