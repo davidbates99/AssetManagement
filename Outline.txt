@@ -3,6 +3,8 @@ Outline: Asset Management Program
 Welcome Message
     Query, Change, Verify, Change Management, Import, Export Asset Information
 
+create asset manager accounts to create watermarks of who is changing what
+
 Menu
     1. One Scan at a Time
         1.1 Verify Only
